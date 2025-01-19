@@ -3,7 +3,7 @@
 ## What is it ?
 
 A simple C ***button blinky*** code for STM32F4, which **doesn't use RAM** and fits under **50 bytes**.  
-Please refer this **[hackster post](https://www.hackster.io/RVLAD/50-bytes-button-blinky-on-stm32f4-which-doesn-t-use-ram-bcdadc#toc-so--how-do-these-48-bytes-look-like-10)** for detailed explanation.  
+Please refer this **[hackster post](https://www.hackster.io/RVLAD/50-bytes-button-blinky-on-stm32f4-which-doesn-t-use-ram-bcdadc)** for detailed explanation.  
 
 ## Project Structure
 
@@ -63,4 +63,24 @@ Please refer this **[hackster post](https://www.hackster.io/RVLAD/50-bytes-butto
         - launches the gdb
     - **load**
         - launches the openocd with configuration for stm32f4 discovery
+
+## How can I try this ?
+- Make sure you have following installed : 
+    - GNU make
+    - OpenOCD
+    - ARM GNU toolchain (arm-none-eabi)
+    - Note that you will need to add all these installed locations to path, or provide full path in makefile.
+- Open terminal window (command window) from any of the project directories and run this commands : 
+    - **make clean** - to clean the build
+    - **make all** - to build the executable
+    - **make load** - to launch OpenOCD GDB server
+    - keep this window running
+- Connect STM32F4 discovery using USB cable, open another terminal window from the same directory and run these commands : 
+    - **make debug** - to launch GDB client
+    - **file ./obj/button_blinky_05.elf** - provide the executable to debug
+    - **target remote localhost:3333** - connect to OpenOCD GDB server (running in other command window)
+    - **monitor reset init** - initialize the target
+    - **monitor flash write_image erase ./obj/button_blinky_05.elf** - flash the executable
+    - **monitor reset** - reset the target and execute the code
+    - now, pressing the button will light up red LED.
 
