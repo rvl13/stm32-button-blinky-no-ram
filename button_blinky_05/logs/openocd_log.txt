@@ -1,0 +1,72 @@
+E:\oss\stm32-button-blinky-no-ram\button_blinky_05>make load
+openocd -f board/stm32f4discovery.cfg
+xPack OpenOCD x86_64 Open On-Chip Debugger 0.11.0+dev (2022-09-01-17:58)
+Licensed under GNU GPL v2
+For bug reports, read
+        http://openocd.org/doc/doxygen/bugs.html
+Info : The selected transport took over low-level target control. The results might differ compared to plain JTAG/SWD
+srst_only separate srst_nogate srst_open_drain connect_deassert_srst
+
+Info : Listening on port 6666 for tcl connections
+Info : Listening on port 4444 for telnet connections
+Info : clock speed 2000 kHz
+Info : STLINK V2J39M27 (API v2) VID:PID 0483:374B
+Info : Target voltage: 2.919573
+Info : [stm32f4x.cpu] Cortex-M4 r0p1 processor detected
+Info : [stm32f4x.cpu] target has 6 breakpoints, 4 watchpoints
+Info : starting gdb server for stm32f4x.cpu on 3333
+Info : Listening on port 3333 for gdb connections
+Info : accepting 'gdb' connection on tcp/3333
+target halted due to debug-request, current mode: Thread
+xPSR: 0x01000000 pc: 0x0800001c msp: 0x0001fff8
+Info : device id = 0x10076413
+Info : flash size = 1024 KiB
+Info : flash size = 512 bytes
+Warn : Prefer GDB command "target extended-remote :3333" instead of "target remote :3333"
+Info : Unable to match requested speed 2000 kHz, using 1800 kHz
+Info : Unable to match requested speed 2000 kHz, using 1800 kHz
+target halted due to debug-request, current mode: Thread
+xPSR: 0x01000000 pc: 0x08000008 msp: 0x00020000
+Info : Unable to match requested speed 8000 kHz, using 4000 kHz
+Info : Unable to match requested speed 8000 kHz, using 4000 kHz
+Warn : Adding extra erase range, 0x08000000 .. 0x08000003
+Info : Unable to match requested speed 2000 kHz, using 1800 kHz
+Info : Unable to match requested speed 2000 kHz, using 1800 kHz
+target halted due to debug-request, current mode: Thread
+xPSR: 0x01000000 pc: 0x08000008 msp: 0xfffffffc
+Info : halted: PC: 0x0800000a
+Info : halted: PC: 0x0800000c
+Info : halted: PC: 0x08000010
+Info : halted: PC: 0x08000012
+Info : halted: PC: 0x08000014
+Info : halted: PC: 0x08000016
+Info : halted: PC: 0x08000018
+Info : halted: PC: 0x0800001a
+Info : halted: PC: 0x0800001c
+Info : halted: PC: 0x0800001e
+Info : halted: PC: 0x08000020
+Info : halted: PC: 0x08000018
+Info : halted: PC: 0x0800001a
+Info : halted: PC: 0x0800001c
+Info : halted: PC: 0x0800001e
+Info : halted: PC: 0x08000020
+Info : halted: PC: 0x08000018
+Info : halted: PC: 0x0800001a
+Info : halted: PC: 0x0800001c
+Info : halted: PC: 0x0800001e
+Info : halted: PC: 0x08000020
+Info : halted: PC: 0x08000018
+Info : halted: PC: 0x0800001a
+Info : halted: PC: 0x0800001c
+Info : halted: PC: 0x0800001e
+Info : halted: PC: 0x08000020
+Info : halted: PC: 0x08000018
+Info : halted: PC: 0x0800001a
+Info : halted: PC: 0x0800001c
+Info : halted: PC: 0x0800001e
+Info : halted: PC: 0x08000020
+Info : The target is not running when halt was requested, stopping GDB.
+Info : The target is not running when halt was requested, stopping GDB.
+Info : halted: PC: 0x08000018
+Info : dropped 'gdb' connection
+shutdown command invoked
