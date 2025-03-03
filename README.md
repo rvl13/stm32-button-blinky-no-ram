@@ -7,7 +7,7 @@ Please refer this **[hackster post](https://www.hackster.io/RVLAD/50-bytes-butto
 
 ## Project Structure
 
-- There are five different projects, each introduces further optimizations to the previous one :
+- There are six different projects, each introduces further optimizations to the previous one :
     - **button_blinky_01**  
         - Simple button blinky with minimal startup code.  
     - **button_blinky_02**  
