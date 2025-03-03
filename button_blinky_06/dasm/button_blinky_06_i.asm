@@ -29,15 +29,16 @@ Disassembly of section .text:
  8000014:	2201      	movs	r2, #1
  8000016:	601a      	str	r2, [r3, #0]
 
+    // we will cache the addresses for IO.
     RegToRead = PRPH_ALIAS_ADDR(GPIOA_IDR_ADDR, PUSH_BTN);
  8000018:	4d04      	ldr	r5, [pc, #16]	; (800002c <Reset_Handler+0x24>)
     RegToWrite = PRPH_ALIAS_ADDR(GPIOD_ODR_ADDR, LED_RED);
  800001a:	4c05      	ldr	r4, [pc, #20]	; (8000030 <Reset_Handler+0x28>)
-    {
-        // Read word from Alias region Address that GPIOA IDR Bit 0 (PA0 Input)
         // And write the same word to Alias Region Address that corresponds to 
         // GPIOD ODR Bit 14 (PD14 Output)
         // *(PRPH_ALIAS_ADDR(GPIOD_ODR_ADDR, LED_RED)) = *(PRPH_ALIAS_ADDR(GPIOA_IDR_ADDR, PUSH_BTN));
+        
+        // now, simply read and write values, no need to load addresses each time.
         *RegToWrite = *RegToRead;
  800001c:	682b      	ldr	r3, [r5, #0]
  800001e:	6023      	str	r3, [r4, #0]

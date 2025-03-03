@@ -47,14 +47,14 @@ Reset_Handler:
 	.loc 1 57 55
 	movs	r2, #1
 	str	r2, [r3]
-	.loc 1 59 15
+	.loc 1 60 15
 	ldr	r5, .L3+8
-	.loc 1 60 16
+	.loc 1 61 16
 	ldr	r4, .L3+12
 .L2:
-	.loc 1 68 23 discriminator 1
+	.loc 1 71 23 discriminator 1
 	ldr	r3, [r5]
-	.loc 1 68 21 discriminator 1
+	.loc 1 71 21 discriminator 1
 	str	r3, [r4]
 	b	.L2
 .L4:

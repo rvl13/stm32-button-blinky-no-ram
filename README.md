@@ -17,7 +17,9 @@ Please refer this **[hackster post](https://www.hackster.io/RVLAD/50-bytes-butto
     - **button_blinky_04**  
         - Using Bit-Banding technique for IO registers access.
     - **button_blinky_05**  
-        - Declaring Reset Handler as naked function, and removal of initial stack pointer from vector table.  
+        - Declaring Reset Handler as naked function, and removal of initial stack pointer from vector table.
+    - **button_blinky_06**  
+        - This example optimizes for speed, while keeping the size same as **button_blinky_05**.
 
 <br>
 

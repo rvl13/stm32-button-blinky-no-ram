@@ -56,6 +56,7 @@ __attribute__((naked)) int Reset_Handler(void)  {
     // Also, no need to reset bit 29, as it is zero at reset state  
     *(PRPH_ALIAS_ADDR(GPIOD_MODER_ADDR, 2 * LED_RED)) = 1;
 
+    // we will cache the addresses for IO.
     RegToRead = PRPH_ALIAS_ADDR(GPIOA_IDR_ADDR, PUSH_BTN);
     RegToWrite = PRPH_ALIAS_ADDR(GPIOD_ODR_ADDR, LED_RED);
 
@@ -65,6 +66,8 @@ __attribute__((naked)) int Reset_Handler(void)  {
         // And write the same word to Alias Region Address that corresponds to 
         // GPIOD ODR Bit 14 (PD14 Output)
         // *(PRPH_ALIAS_ADDR(GPIOD_ODR_ADDR, LED_RED)) = *(PRPH_ALIAS_ADDR(GPIOA_IDR_ADDR, PUSH_BTN));
+        
+        // now, simply read and write values, no need to load addresses each time.
         *RegToWrite = *RegToRead;
     }
 

@@ -171,7 +171,7 @@ Disassembly of section .debug_aranges:
 Disassembly of section .debug_line:
 
 00000000 <.debug_line>:
-   0:	000000f5 	strdeq	r0, [r0], -r5
+   0:	000000f7 	strdeq	r0, [r0], -r7
    4:	00ba0003 	adcseq	r0, sl, r3
    8:	01020000 	mrseq	r0, (UNDEF: 2)
    c:	000d0efb 	strdeq	r0, [sp], -fp
@@ -228,12 +228,12 @@ Disassembly of section .debug_line:
   d4:	21110501 	tstcs	r1, r1, lsl #10
   d8:	11030505 	tstne	r3, r5, lsl #10
   dc:	2037054a 	eorscs	r0, r7, sl, asr #10
-  e0:	05300f05 	ldreq	r0, [r0, #-3845]!	; 0xfffff0fb
+  e0:	05310f05 	ldreq	r0, [r1, #-3845]!	; 0xfffff0fb
   e4:	17052110 	smladne	r5, r0, r1, r2
   e8:	01040200 	mrseq	r0, R12_usr
-  ec:	00150528 	andseq	r0, r5, r8, lsr #10
-  f0:	20010402 	andcs	r0, r1, r2, lsl #8
-  f4:	01000b02 	tsteq	r0, r2, lsl #22
+  ec:	05200a03 	streq	r0, [r0, #-2563]!	; 0xfffff5fd
+  f0:	04020015 	streq	r0, [r2], #-21	; 0xffffffeb
+  f4:	0b022001 	bleq	88100 <Reset_Handler+0x88100>
   f8:	Address 0x000000f8 is out of bounds.
 
 

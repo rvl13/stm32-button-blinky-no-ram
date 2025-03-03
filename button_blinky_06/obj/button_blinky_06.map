@@ -81,8 +81,8 @@ LOAD linker stubs
  .debug_aranges
                 0x00000000       0x20 obj/main.o
 
-.debug_line     0x00000000       0xf9
- .debug_line    0x00000000       0xf9 obj/main.o
+.debug_line     0x00000000       0xfb
+ .debug_line    0x00000000       0xfb obj/main.o
 
 .debug_str      0x00000000      0x126
  .debug_str     0x00000000      0x126 obj/main.o
