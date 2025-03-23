@@ -2,7 +2,7 @@
 
 ## What is it ?
 
-A simple C ***button blinky*** code for STM32F4, which **doesn't use RAM** and fits under **50 bytes**.  
+Simple C ***button blinky*** and ***delay blinky*** codes for STM32F4, which **don't use RAM** and fit under **50 bytes**.  
 Please refer this **[hackster post](https://www.hackster.io/RVLAD/50-bytes-button-blinky-on-stm32f4-which-doesn-t-use-ram-bcdadc)** for detailed explanation.  
 
 ## Project Structure
