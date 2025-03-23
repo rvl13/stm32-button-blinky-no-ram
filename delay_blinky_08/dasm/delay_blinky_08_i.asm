@@ -18,7 +18,7 @@ __attribute__((naked)) int Reset_Handler(void)  {
     register const uint32_t DelayValue = (uint32_t)DELAY_VALUE;
  800000a:	4e08      	ldr	r6, [pc, #32]	; (800002c <Reset_Handler+0x24>)
 
-    // enable clock for GPIOA and GPIOD
+    // enable clock for GPIOD
     // since, we need to set single bit, we can use bitband now
     *(PRPH_ALIAS_ADDR(AHB1ENR_ADDR, 3)) = 1;
  800000c:	4b08      	ldr	r3, [pc, #32]	; (8000030 <Reset_Handler+0x28>)
