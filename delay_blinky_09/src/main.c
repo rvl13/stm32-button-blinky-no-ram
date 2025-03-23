@@ -1,7 +1,7 @@
 #include <stdint.h>
 
 #define LED_RED    14   // PD14
-#define DELAY_VALUE     2097152  // shall give approx half second delay
+#define DELAY_VALUE     2097152  // 2^14 - shall give approx half second delay
 
 #define AHB1ENR_ADDR        0x40023830
 #define GPIOD_MODER_ADDR    0x40020C00
