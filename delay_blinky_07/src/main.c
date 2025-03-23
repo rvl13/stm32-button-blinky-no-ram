@@ -20,7 +20,7 @@ int main(void)  {
     while (1)
     {
         // delay for some time
-        while( Counter++ < 700000 );
+        while( Counter++ < DELAY_VALUE );
         Counter = 0;
 
         // toggle the LED (use XOR for bit toggling)

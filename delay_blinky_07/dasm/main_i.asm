@@ -49,7 +49,7 @@ int main(void)  {
     while (1)
     {
         // delay for some time
-        while( Counter++ < 700000 );
+        while( Counter++ < DELAY_VALUE );
   32:	bf00      	nop
   34:	68fb      	ldr	r3, [r7, #12]
   36:	1c5a      	adds	r2, r3, #1
@@ -68,7 +68,7 @@ int main(void)  {
   48:	f483 4280 	eor.w	r2, r3, #16384	; 0x4000
   4c:	683b      	ldr	r3, [r7, #0]
   4e:	601a      	str	r2, [r3, #0]
-        while( Counter++ < 700000 );
+        while( Counter++ < DELAY_VALUE );
   50:	e7ef      	b.n	32 <main+0x32>
   52:	bf00      	nop
   54:	40023830 	.word	0x40023830
