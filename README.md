@@ -7,7 +7,7 @@ Please refer this **[hackster post](https://www.hackster.io/RVLAD/50-bytes-butto
 
 ## Project Structure
 
-- There are six different projects, each introduces further optimizations to the previous one :
+- There are nine different projects, each introduces further optimizations to the previous one :
     - **button_blinky_01**  
         - Simple button blinky with minimal startup code.  
     - **button_blinky_02**  
@@ -19,7 +19,13 @@ Please refer this **[hackster post](https://www.hackster.io/RVLAD/50-bytes-butto
     - **button_blinky_05**  
         - Declaring Reset Handler as naked function, and removal of initial stack pointer from vector table.
     - **button_blinky_06**  
-        - This example optimizes for speed, while keeping the size same as **button_blinky_05**.
+        - Unlike previous projects, this one optimizes for speed instead of size, while keeping the size same as **button_blinky_05**.
+    - **delay_blinky_07**
+        - A classic blinky with delay, written in manner similar to **button_blinky_01**.
+    - **delay_blinky_08**
+        - Applies all the optimizations from **button_blinky_06**, and additionally eliminates extra loop of the delay.
+    - **delay_blinky_09**
+        - Reusing the register variable, and immediate moving of constants to register instead of loading constants from ROM at the end of function.
 
 <br>
 
