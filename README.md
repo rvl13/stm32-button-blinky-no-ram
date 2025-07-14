@@ -26,6 +26,8 @@ Please refer this **[hackster post](https://www.hackster.io/RVLAD/50-bytes-butto
         - Applies all the optimizations from **button_blinky_06**, and additionally eliminates extra loop of the delay.
     - **delay_blinky_09**
         - Reusing the register variable, and immediate moving of constants to register instead of loading constants from ROM at the end of function.
+    - **delay_blinky_10**
+        - same as the **delay_blinky_09**, but has the delay value tuned to be as much as possibly closer to 1Hz, while keeping the binary size same.
 
 <br>
 
