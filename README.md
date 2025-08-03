@@ -7,27 +7,33 @@ Please refer this **[hackster post](https://www.hackster.io/RVLAD/50-bytes-butto
 
 ## Project Structure
 
-- There are nine different projects, each introduces further optimizations to the previous one :
+- There are nine different projects, each introduces further/different optimizations to the previous one. Size of the compiled binary is mentioned in *(brackets)* at the end :
     - **button_blinky_01**  
-        - Simple button blinky with minimal startup code.  
+        - Simple button blinky with minimal startup code. *(268 bytes)*
     - **button_blinky_02**  
-        - Startup code removed and application implemented completely in Reset Handler.
+        - Startup code removed and application implemented completely in Reset Handler. *(136 bytes)*
     - **button_blinky_03**  
-        - Not using stack memory (local variables) and every operation being performed in core general purpose registers.
+        - Not using stack memory (local variables) and every operation being performed in core general purpose registers. *(72 bytes)*
     - **button_blinky_04**  
-        - Using Bit-Banding technique for IO registers access.
+        - Using Bit-Banding technique for IO registers access. *(56 bytes)*
     - **button_blinky_05**  
-        - Declaring Reset Handler as naked function, and removal of initial stack pointer from vector table.
+        - Declaring Reset Handler as naked function, and removal of initial stack pointer from vector table. *(48 bytes)*
     - **button_blinky_06**  
-        - Unlike previous projects, this one optimizes for speed instead of size, while keeping the size same as **button_blinky_05**.
+        - Unlike previous projects, this one optimizes for speed instead of size, while keeping the size same as **button_blinky_05**. *(48 bytes)*
     - **delay_blinky_07**
-        - A classic blinky with delay, written in manner similar to **button_blinky_01**.
+        - A classic blinky with delay, written in manner similar to **button_blinky_01**. *(240 bytes)*
     - **delay_blinky_08**
-        - Applies all the optimizations from **button_blinky_06**, and additionally eliminates extra loop of the delay.
+        - Applies all the optimizations from **button_blinky_06**, and additionally eliminates extra loop of the delay. *(56 bytes)*
     - **delay_blinky_09**
-        - Reusing the register variable, and immediate moving of constants to register instead of loading constants from ROM at the end of function.
+        - Reusing the register variable, and immediate moving of constants to register instead of loading constants from ROM at the end of function. *(48 bytes)*
     - **delay_blinky_10**
-        - same as the **delay_blinky_09**, but has the delay value tuned to be as much as possibly closer to 1Hz, while keeping the binary size same.
+        - same as the **delay_blinky_09**, but has the delay value tuned to be as much as possibly closer to 1Hz, while keeping the binary size same. *(48 bytes)*
+    - **delay_blinky_11**
+        - Smallest blinky which achieves delay by storing 21th bit of a freely incrementing counter in ODR. Results in a 0.76Hz blinky. *(36 bytes)*
+    - **delay_blinky_12**
+        - Similar to the **delay_blinky_11**, but uses division with unsigned integer (which is not a power of 2) to achieve delay. *(44 bytes)*
+    - **delay_blinky_13**
+        - Similar to the **delay_blinky_09**, but keeps counter uninitialzed and instead uses odd delay threshold to initialize peripherals, and a much better at being closer to 1Hz than **delay_blinky_10**. *(48 bytes)*
 
 <br>
 

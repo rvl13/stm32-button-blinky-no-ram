@@ -1,0 +1,60 @@
+
+obj/main.o:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <Reset_Handler>:
+__attribute__((naked)) int Reset_Handler(void)  {
+
+    // multiple register variables/pointers
+    register uint32_t *RegToReadWrite = (uint32_t *)0x00000000;
+    register uint32_t Counter;      // no need to initialize Counter
+    register uint32_t DelayValue = (uint32_t)DELAY_VALUE;
+   0:	4d06      	ldr	r5, [pc, #24]	; (1c <Reset_Handler+0x1c>)
+
+    // enable clock for GPIOD
+    // since, we need to set single bit, we can use bitband now
+    // and the DelayValue has off value (bit 0 is 1)
+    // Also, we will make reuse of delay value
+    *(PRPH_ALIAS_ADDR(AHB1ENR_ADDR, 3)) = DelayValue;
+   2:	4b07      	ldr	r3, [pc, #28]	; (20 <Reset_Handler+0x20>)
+   4:	601d      	str	r5, [r3, #0]
+
+    // assign address of GPIOD MODER, and set RED LED To output
+    // Also, no need to reset bit 29, as it is zero at reset state
+    // Also, we will make reuse of delay value
+    *(PRPH_ALIAS_ADDR(GPIOD_MODER_ADDR, 2 * LED_RED)) = DelayValue;
+   6:	4b07      	ldr	r3, [pc, #28]	; (24 <Reset_Handler+0x24>)
+   8:	601d      	str	r5, [r3, #0]
+
+    // we will cache the addresses for IO.
+    RegToReadWrite = PRPH_ALIAS_ADDR(GPIOD_ODR_ADDR, LED_RED);
+   a:	4e07      	ldr	r6, [pc, #28]	; (28 <Reset_Handler+0x28>)
+
+    while (1)
+    {
+        // increment the Counter
+        Counter++;
+   c:	3401      	adds	r4, #1
+
+        // check if we have reached the Delay Value
+        if (Counter >= DelayValue)
+   e:	42ac      	cmp	r4, r5
+  10:	d3fc      	bcc.n	c <Reset_Handler+0xc>
+        {
+            // reset the counter
+            Counter = 0;
+  12:	2400      	movs	r4, #0
+
+            // toggle the LED
+            *RegToReadWrite = ~(*RegToReadWrite);
+  14:	6833      	ldr	r3, [r6, #0]
+  16:	43db      	mvns	r3, r3
+  18:	6033      	str	r3, [r6, #0]
+        Counter++;
+  1a:	e7f7      	b.n	c <Reset_Handler+0xc>
+  1c:	001e8e49 	.word	0x001e8e49
+  20:	4247060c 	.word	0x4247060c
+  24:	42418070 	.word	0x42418070
+  28:	424182b8 	.word	0x424182b8
