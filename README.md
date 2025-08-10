@@ -7,7 +7,7 @@ Please refer this **[hackster post](https://www.hackster.io/RVLAD/50-bytes-butto
 
 ## Project Structure
 
-- There are nine different projects, each introduces further/different optimizations to the previous one. Size of the compiled binary is mentioned in *(brackets)* at the end :
+- There are multiple different projects, each introduces further/different optimizations to the previous one. Size of the compiled binary is mentioned in *(brackets)* at the end :
     - **button_blinky_01**  
         - Simple button blinky with minimal startup code. *(268 bytes)*
     - **button_blinky_02**  
