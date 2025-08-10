@@ -3,7 +3,7 @@
 ## What is it ?
 
 Simple C ***button blinky*** and ***delay blinky*** codes for STM32F4, which **don't use RAM** and fit under **50 bytes**.  
-Please refer this **[hackster post](https://www.hackster.io/RVLAD/50-bytes-button-blinky-on-stm32f4-which-doesn-t-use-ram-bcdadc)** for detailed explanation.  
+Please refer this **[hackster post](https://www.hackster.io/RVLAD/50-bytes-button-blinky-on-stm32f4-which-doesn-t-use-ram-bcdadc)** for detailed explanation. Also, the same project has been submitted to **[hackaday 1Hz challenge](https://hackaday.io/submissions/one-hertz-challenge/list)** and additional explanation can be found on this **[hackaday post](https://hackaday.io/project/203691-stm32f4-1hz-blinky-under-50-bytes)**.
 
 ## Project Structure
 
