@@ -1,0 +1,141 @@
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+FLASH            0x08000000         0x00100000         xr
+SRAM             0x20000000         0x00020000         xrw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD obj/minimal_arduino.o
+LOAD obj/main.o
+LOAD obj/stm32_startup.o
+
+.text           0x08000000      0x2a8
+ *(.isr_vector)
+ .isr_vector    0x08000000        0x8 obj/stm32_startup.o
+                0x08000000                vectors
+ *(.text)
+ .text          0x08000008      0x1cc obj/minimal_arduino.o
+                0x08000008                initGpio
+                0x0800002c                pinMode
+                0x080000b4                digitalRead
+                0x0800011c                digitalWrite
+ .text          0x080001d4       0x50 obj/main.o
+                0x080001d4                setup
+                0x080001ec                loop
+                0x08000212                main
+ .text          0x08000224       0x84 obj/stm32_startup.o
+                0x08000224                Reset_Handler
+ *(.text.*)
+ *(.init)
+ *(.fini)
+ *(.rodata)
+ *(.rodata.*)
+                0x080002a8                . = ALIGN (0x4)
+                0x080002a8                _etext = .
+                0x080002a8                _la_data = LOADADDR (.data)
+
+.glue_7         0x080002a8        0x0
+ .glue_7        0x080002a8        0x0 linker stubs
+
+.glue_7t        0x080002a8        0x0
+ .glue_7t       0x080002a8        0x0 linker stubs
+
+.vfp11_veneer   0x080002a8        0x0
+ .vfp11_veneer  0x080002a8        0x0 linker stubs
+
+.v4_bx          0x080002a8        0x0
+ .v4_bx         0x080002a8        0x0 linker stubs
+
+.iplt           0x080002a8        0x0
+ .iplt          0x080002a8        0x0 obj/minimal_arduino.o
+
+.rel.dyn        0x080002a8        0x0
+ .rel.iplt      0x080002a8        0x0 obj/minimal_arduino.o
+
+.data           0x20000000        0xc load address 0x080002a8
+                0x20000000                _sdata = .
+ *(.data)
+ .data          0x20000000        0xc obj/minimal_arduino.o
+                0x20000000                RCC_PRPH
+                0x20000004                GPIOA_PRPH
+                0x20000008                GPIOD_PRPH
+ .data          0x2000000c        0x0 obj/main.o
+ .data          0x2000000c        0x0 obj/stm32_startup.o
+ *(.data.*)
+                0x2000000c                . = ALIGN (0x4)
+                0x2000000c                _edata = .
+
+.igot.plt       0x2000000c        0x0 load address 0x080002b4
+ .igot.plt      0x2000000c        0x0 obj/minimal_arduino.o
+
+.bss            0x2000000c        0x0 load address 0x080002b4
+                0x2000000c                _sbss = .
+                0x2000000c                __bss_start__ = _sbss
+ *(.bss)
+ .bss           0x2000000c        0x0 obj/minimal_arduino.o
+ .bss           0x2000000c        0x0 obj/main.o
+ .bss           0x2000000c        0x0 obj/stm32_startup.o
+ *(.bss.*)
+ *(COMMON)
+                0x2000000c                . = ALIGN (0x4)
+                0x2000000c                _ebss = .
+                0x2000000c                __bss_end__ = _ebss
+                0x2000000c                . = ALIGN (0x4)
+                0x2000000c                end = .
+                0x2000000c                __end__ = .
+OUTPUT(obj/arduino_button_blinky_00.elf elf32-littlearm)
+LOAD linker stubs
+
+.debug_info     0x00000000      0x515
+ .debug_info    0x00000000      0x2bf obj/minimal_arduino.o
+ .debug_info    0x000002bf       0xdc obj/main.o
+ .debug_info    0x0000039b      0x17a obj/stm32_startup.o
+
+.debug_abbrev   0x00000000      0x230
+ .debug_abbrev  0x00000000       0xf0 obj/minimal_arduino.o
+ .debug_abbrev  0x000000f0       0x85 obj/main.o
+ .debug_abbrev  0x00000175       0xbb obj/stm32_startup.o
+
+.debug_aranges  0x00000000       0x60
+ .debug_aranges
+                0x00000000       0x20 obj/minimal_arduino.o
+ .debug_aranges
+                0x00000020       0x20 obj/main.o
+ .debug_aranges
+                0x00000040       0x20 obj/stm32_startup.o
+
+.debug_line     0x00000000      0x3d5
+ .debug_line    0x00000000      0x213 obj/minimal_arduino.o
+ .debug_line    0x00000213       0x75 obj/main.o
+ .debug_line    0x00000288      0x14d obj/stm32_startup.o
+
+.debug_str      0x00000000      0x3ff
+ .debug_str     0x00000000      0x370 obj/minimal_arduino.o
+                                0x3b5 (size before relaxing)
+ .debug_str     0x00000370       0x28 obj/main.o
+                                0x14e (size before relaxing)
+ .debug_str     0x00000398       0x67 obj/stm32_startup.o
+                                0x1ae (size before relaxing)
+
+.comment        0x00000000       0x49
+ .comment       0x00000000       0x49 obj/minimal_arduino.o
+                                 0x4a (size before relaxing)
+ .comment       0x00000049       0x4a obj/main.o
+ .comment       0x00000049       0x4a obj/stm32_startup.o
+
+.ARM.attributes
+                0x00000000       0x2e
+ .ARM.attributes
+                0x00000000       0x2e obj/minimal_arduino.o
+ .ARM.attributes
+                0x0000002e       0x2e obj/main.o
+ .ARM.attributes
+                0x0000005c       0x2e obj/stm32_startup.o
+
+.debug_frame    0x00000000      0x140
+ .debug_frame   0x00000000       0xa8 obj/minimal_arduino.o
+ .debug_frame   0x000000a8       0x64 obj/main.o
+ .debug_frame   0x0000010c       0x34 obj/stm32_startup.o

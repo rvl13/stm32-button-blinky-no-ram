@@ -7,7 +7,11 @@ Please refer this **[hackster post](https://www.hackster.io/RVLAD/50-bytes-butto
 
 ## Project Structure
 
-- There are multiple different projects, each introduces further/different optimizations to the previous one. Size of the compiled binary is mentioned in *(brackets)* at the end :
+- There are multiple different examples, each introduces further/different optimizations to the previous one. Size of the compiled binary is mentioned in *(brackets)* at the end :
+    - **arduino_button_blinky_00**
+        - arduino style button blinky with minimal arduino digital IO api implementation, to get "under the hood" experience. *(692 bytes)*
+    - **arduino_delay_blinky_00**
+        - arduino style 1Hz delay blinky with minimal arduino digital IO api and a blocking software delay implementation. *(736 bytes)*
     - **button_blinky_01**  
         - Simple button blinky with minimal startup code. *(268 bytes)*
     - **button_blinky_02**  
@@ -19,7 +23,7 @@ Please refer this **[hackster post](https://www.hackster.io/RVLAD/50-bytes-butto
     - **button_blinky_05**  
         - Declaring Reset Handler as naked function, and removal of initial stack pointer from vector table. *(48 bytes)*
     - **button_blinky_06**  
-        - Unlike previous projects, this one optimizes for speed instead of size, while keeping the size same as **button_blinky_05**. *(48 bytes)*
+        - Unlike previous examples, this one optimizes for speed instead of size, while keeping the size same as **button_blinky_05**. *(48 bytes)*
     - **delay_blinky_07**
         - A classic blinky with delay, written in manner similar to **button_blinky_01**. *(240 bytes)*
     - **delay_blinky_08**
@@ -34,11 +38,15 @@ Please refer this **[hackster post](https://www.hackster.io/RVLAD/50-bytes-butto
         - Similar to the **delay_blinky_11**, but uses division with unsigned integer (which is not a power of 2) to achieve delay. *(44 bytes)*
     - **delay_blinky_13**
         - Similar to the **delay_blinky_09**, but keeps counter uninitialzed and instead uses odd delay threshold to initialize peripherals, and a much better at being closer to 1Hz than **delay_blinky_10**. *(48 bytes)*
+    - **delay_blinky_14**
+        - Similar to the **delay_blinky_13**, but does downcounting from DelayValue to 0, instead of upcounting 0 to DelayValue *(48 bytes)*
+    - **delay_blinky_15**
+        - Similar to the **delay_blinky_14**, but downcounting from 0xFFFFFFFF to (0xFFFFFFFF - DelayValue) to fix the initial wait time with **delay_blinky_14** *(48 bytes)* 
 
 <br>
 
 
-- Each project has following directory structure :
+- Each example has following directory structure :
     - **asm**
         - directory where all the assembler output files will be saved.
     - **dasm**
@@ -50,7 +58,7 @@ Please refer this **[hackster post](https://www.hackster.io/RVLAD/50-bytes-butto
     - **src**
         - directory where all the C source files will be saved.
     - ***makefile***
-        - makefile to help with the project build.
+        - makefile to help with the example build.
     - ***stm32_ls.ld***
         - linker script.
 
