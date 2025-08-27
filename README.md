@@ -7,7 +7,7 @@ Please refer this **[hackster post](https://www.hackster.io/RVLAD/50-bytes-butto
 
 ## Project Structure
 
-- There are multiple different examples, each introduces further/different optimizations to the previous one. Size of the compiled binary is mentioned in *(brackets)* at the end :
+- There are multiple different examples, each introduces further/different/new optimizations to the previous one. Size of the compiled binary is mentioned in *(brackets)* at the end :
     - **arduino_button_blinky_00**
         - arduino style button blinky with minimal arduino digital IO api implementation, to get "under the hood" experience. *(692 bytes)*
     - **arduino_delay_blinky_00**
@@ -33,7 +33,7 @@ Please refer this **[hackster post](https://www.hackster.io/RVLAD/50-bytes-butto
     - **delay_blinky_10**
         - same as the **delay_blinky_09**, but has the delay value tuned to be as much as possibly closer to 1Hz, while keeping the binary size same. *(48 bytes)*
     - **delay_blinky_11**
-        - Smallest blinky which achieves delay by storing 21th bit of a freely incrementing counter in ODR. Results in a 0.76Hz blinky. *(36 bytes)*
+        - Second smallest blinky which achieves delay by storing 21th bit of a freely incrementing counter in ODR. Results in a 0.76Hz blinky. *(36 bytes)*
     - **delay_blinky_12**
         - Similar to the **delay_blinky_11**, but uses division with unsigned integer (which is not a power of 2) to achieve delay. *(44 bytes)*
     - **delay_blinky_13**
@@ -41,7 +41,10 @@ Please refer this **[hackster post](https://www.hackster.io/RVLAD/50-bytes-butto
     - **delay_blinky_14**
         - Similar to the **delay_blinky_13**, but does downcounting from DelayValue to 0, instead of upcounting 0 to DelayValue *(48 bytes)*
     - **delay_blinky_15**
-        - Similar to the **delay_blinky_14**, but downcounting from 0xFFFFFFFF to (0xFFFFFFFF - DelayValue) to fix the initial wait time with **delay_blinky_14** *(48 bytes)* 
+        - Similar to the **delay_blinky_14**, but downcounting from 0xFFFFFFFF to (0xFFFFFFFF - DelayValue) to fix the initial wait time with **delay_blinky_14** *(48 bytes)*
+    - **delay_blinky_16**
+        - Smallest blinky, similar to **delay_blinky_11**, but doesn't initialize the pin as output, rather toggles among internal pull-up (LED ON) and no-pull (LED OFF) for blinking. *(28 bytes)*
+
 
 <br>
 
