@@ -3,7 +3,7 @@
 ## What is it ?
 
 Simple C ***button blinky*** and ***delay blinky*** codes for STM32F4, which **don't use RAM** and fit under **50 bytes**.  
-Please refer this **[hackster post](https://www.hackster.io/RVLAD/50-bytes-button-blinky-on-stm32f4-which-doesn-t-use-ram-bcdadc)** for detailed explanation. Also, the same project has been submitted to **[hackaday 1Hz challenge](https://hackaday.io/submissions/one-hertz-challenge/list)** and additional explanation can be found on this **[hackaday post](https://hackaday.io/project/203691-stm32f4-1hz-blinky-under-50-bytes)**.
+Please refer this **[hackster.io post](https://www.hackster.io/RVLAD/50-bytes-button-blinky-on-stm32f4-which-doesn-t-use-ram-bcdadc)** for detailed explanation. Also, the same project has been submitted to **[hackaday.io 1Hz challenge](https://hackaday.io/submissions/one-hertz-challenge/list)** and additional explanation can be found on this **[hackaday.io post](https://hackaday.io/project/203691-stm32f4-1hz-blinky-under-50-bytes)**. Also, this project was featured on **[hackaday.com](https://hackaday.com/2025/08/16/2025-one-hertz-challenge-stm32-blinks-in-under-50-bytes/)**.
 
 ## Project Structure
 
@@ -44,6 +44,12 @@ Please refer this **[hackster post](https://www.hackster.io/RVLAD/50-bytes-butto
         - Similar to the **delay_blinky_14**, but downcounting from 0xFFFFFFFF to (0xFFFFFFFF - DelayValue) to fix the initial wait time with **delay_blinky_14** *(48 bytes)*
     - **delay_blinky_16**
         - Smallest blinky, similar to **delay_blinky_11**, but doesn't initialize the pin as output, rather toggles among internal pull-up (LED ON) and no-pull (LED OFF) for blinking. *(28 bytes)*
+    - **timer_blinky_17**
+        - Uses Timer4 Channel3 to drive 1Hz blinky on PD14 Red LED, makes use of minimal startup code. *(272 bytes)*
+    - **timer_blinky_18**
+        - Similar to **timer_blinky_17**, but gives up startup code and RAM usage. Uses register variables instead. *(112 bytes)*
+    - **timer_blinky_19**
+        - Similar to **timer_blinky_18**, but jumps between different peripheral registers using difference of offset between them, instead of using offset with respect to peripheral's base address. *(96 bytes)*
 
 
 <br>
@@ -97,7 +103,7 @@ Please refer this **[hackster post](https://www.hackster.io/RVLAD/50-bytes-butto
     - OpenOCD
     - ARM GNU toolchain (arm-none-eabi)
     - Note that you will need to add all these installed locations to path, or provide full path in makefile.
-- Open terminal window (command window) from any of the project directories and run this commands : 
+- Open terminal window (command window) from any of the project directories (say button_blinky_05) and run these commands : 
     - **make clean** - to clean the build
     - **make all** - to build the executable
     - **make load** - to launch OpenOCD GDB server

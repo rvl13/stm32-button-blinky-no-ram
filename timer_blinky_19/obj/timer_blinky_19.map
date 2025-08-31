@@ -1,0 +1,83 @@
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+FLASH            0x08000004         0x00100000         xr
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD obj/main.o
+
+.text           0x08000004       0x60
+ *(.isr_vector)
+ .isr_vector    0x08000004        0x4 obj/main.o
+                0x08000004                vectors
+ *(.text)
+ .text          0x08000008       0x5c obj/main.o
+                0x08000008                Reset_Handler
+ *(.text.*)
+ *(.init)
+ *(.fini)
+ *(.rodata)
+ *(.rodata.*)
+                0x08000064                . = ALIGN (0x4)
+                0x08000064                _etext = .
+OUTPUT(obj/timer_blinky_19.elf elf32-littlearm)
+LOAD linker stubs
+
+.data           0x08000064        0x0
+ .data          0x08000064        0x0 obj/main.o
+
+.igot.plt       0x08000064        0x0
+ .igot.plt      0x08000064        0x0 obj/main.o
+
+.glue_7         0x08000064        0x0
+ .glue_7        0x08000064        0x0 linker stubs
+
+.glue_7t        0x08000064        0x0
+ .glue_7t       0x08000064        0x0 linker stubs
+
+.vfp11_veneer   0x08000064        0x0
+ .vfp11_veneer  0x08000064        0x0 linker stubs
+
+.v4_bx          0x08000064        0x0
+ .v4_bx         0x08000064        0x0 linker stubs
+
+.iplt           0x08000064        0x0
+ .iplt          0x08000064        0x0 obj/main.o
+
+.rel.dyn        0x08000064        0x0
+ .rel.iplt      0x08000064        0x0 obj/main.o
+
+.bss            0x08000064        0x0
+ .bss           0x08000064        0x0 obj/main.o
+
+.debug_info     0x00000000      0x28c
+ .debug_info    0x00000000      0x28c obj/main.o
+
+.debug_abbrev   0x00000000       0xb0
+ .debug_abbrev  0x00000000       0xb0 obj/main.o
+
+.debug_aranges  0x00000000       0x20
+ .debug_aranges
+                0x00000000       0x20 obj/main.o
+
+.debug_line     0x00000000      0x12b
+ .debug_line    0x00000000      0x12b obj/main.o
+
+.debug_str      0x00000000      0x3ed
+ .debug_str     0x00000000      0x3ed obj/main.o
+                                0x42a (size before relaxing)
+
+.comment        0x00000000       0x49
+ .comment       0x00000000       0x49 obj/main.o
+                                 0x4a (size before relaxing)
+
+.ARM.attributes
+                0x00000000       0x2e
+ .ARM.attributes
+                0x00000000       0x2e obj/main.o
+
+.debug_frame    0x00000000       0x20
+ .debug_frame   0x00000000       0x20 obj/main.o
